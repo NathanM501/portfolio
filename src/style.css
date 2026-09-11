@@ -1,0 +1,192 @@
+@import "tailwindcss";
+
+/* Dark mode : classe .dark sur <html> */
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "DM Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Palette cobalt + ambre */
+  --color-primary: #2b52d3;
+  --color-primary-light: #86a6ff;
+  --color-primary-deep: #1f3fa8;
+  --color-accent: #f6a821;
+  --color-accent-light: #ffc44d;
+  --color-accent-deep: #b57a08;
+
+  /* Encre (mode clair) */
+  --color-ink-900: #14161b;
+  --color-ink-800: #1b1e25;
+  --color-ink-700: #232730;
+  --color-ink-600: #2c313b;
+  --color-ink-500: #3a4048;
+  --color-ink-400: #6b7280;
+
+  /* Brume (fonds clairs) */
+  --color-mist-100: #eef0f4;
+  --color-mist-200: #f5f6f8;
+  --color-mist-300: #fbfbfc;
+
+  /* Fenêtre de terminal (toujours sombre, y compris en mode clair) */
+  --color-term-bg: #0b0e14;
+  --color-term-panel: #10141c;
+  --color-term-line: #1e2530;
+  --color-term-dim: #67718a;
+  --color-term-text: #c9d1de;
+
+  /* Filets (hairlines) */
+  --color-line: #dcdee4;
+  --color-line-dark: #242a35;
+}
+
+/* ============ Base ============ */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-mist-200);
+  color: var(--color-ink-900);
+  -webkit-font-smoothing: antialiased;
+}
+
+.dark body {
+  background: var(--color-ink-900);
+  color: var(--color-mist-100);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-primary) 28%, transparent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+.dark :focus-visible {
+  outline-color: var(--color-primary-light);
+}
+
+/* Scrollbar discrète (mode sombre) */
+.dark ::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #2a3140;
+  border-radius: 999px;
+  border: 2px solid var(--color-ink-900);
+}
+.dark ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ============ Fenêtre de terminal ============ */
+.term {
+  background: var(--color-term-bg);
+  border: 1px solid var(--color-term-line);
+  border-radius: 12px;
+  box-shadow: 0 20px 50px -24px rgb(0 0 0 / 0.5);
+}
+
+/* Curseur clignotant */
+@keyframes blink {
+  0%,
+  55% {
+    opacity: 1;
+  }
+  56%,
+  100% {
+    opacity: 0;
+  }
+}
+.blink {
+  animation: blink 1.1s steps(1, end) infinite;
+}
+
+/* Barres de compétences "segmentées" (comme `top`) */
+.meter {
+  width: 0;
+  height: 100%;
+  border-radius: 999px;
+  background: repeating-linear-gradient(
+    90deg,
+    currentColor 0 5px,
+    transparent 5px 8px
+  );
+  transition: width 1.1s cubic-bezier(0.22, 0.61, 0.36, 1) 0.15s;
+}
+.revealed .meter {
+  width: var(--w, 0%);
+}
+
+/* ============ Boutons "commande" (mono) ============ */
+.btn-cmd {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1;
+  padding: 0.8rem 1.15rem;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition:
+    background 0.18s ease,
+    color 0.18s ease,
+    border-color 0.18s ease,
+    transform 0.18s ease;
+}
+.btn-cmd-solid {
+  background: var(--color-primary);
+  color: #fff;
+}
+.btn-cmd-solid:hover {
+  background: var(--color-primary-deep);
+  transform: translateY(-1px);
+}
+.btn-cmd-outline {
+  border-color: color-mix(in srgb, currentColor 30%, transparent);
+}
+.btn-cmd-outline:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+.dark .btn-cmd-outline:hover {
+  border-color: var(--color-primary-light);
+  color: var(--color-primary-light);
+}
+
+/* ============ Révélation au scroll (subtile) ============ */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .blink {
+    animation: none;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .meter {
+    transition: none;
+    width: var(--w, 0%);
+  }
+}
