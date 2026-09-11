@@ -3,3 +3,5 @@ auto-imports.d.ts
 node_modules/
 components.d.ts
 package-lock.json
+dist/
+.vercel/

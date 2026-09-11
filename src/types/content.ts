@@ -70,11 +70,50 @@ export interface Ui {
     footerTechnologies: string;
 }
 
-export interface Seo {
+export interface JsonLd {
+    '@context': string;
+    '@type': string;
+    name: string;
+    jobTitle: string;
+    knowsAbout: string[];
+    email: string;
+    url: string;
+    sameAs: string[];
+    address: {
+        '@type': string;
+        addressLocality: string;
+        addressCountry: string;
+    };
+}
+
+export interface OpenGraph {
+    type: 'website' | 'article';
+    url: string;
     title: string;
     description: string;
-    openGraph: { title: string; description: string };
-    jsonLd: Record<string, unknown>;
+    image: string;
+    imageAlt: string;
+}
+
+export interface Twitter {
+    card: 'summary' | 'summary_large_image';
+    title: string;
+    description: string;
+    image: string;
+    imageAlt: string;
+}
+
+export interface Seo {
+    siteUrl: string;
+    title: string;
+    description: string;
+    keywords: string[];
+    author: string;
+    themeColor: string;
+    canonicalPath: string;
+    openGraph: OpenGraph;
+    twitter: Twitter;
+    jsonLd: JsonLd;
 }
 
 export interface Content {

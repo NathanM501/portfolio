@@ -2,6 +2,8 @@ import { content } from './content';
 
 export const { profile, services, projects, career, skills, ui, seo } = content;
 
+export const { education, experience } = career;
+
 export const skillRows = skills.rows;
 
 export const fullName = `${profile.firstName} ${profile.lastName}`;

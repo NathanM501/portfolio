@@ -2,7 +2,7 @@
     <section id="accueil" data-section class="scroll-mt-20">
         <div
             class="mx-auto grid max-w-6xl gap-10 px-4 pb-16 pt-28 sm:px-6 lg:grid-cols-12 lg:gap-8 lg:pb-24 lg:pt-32">
-            <div class="lg:col-span-9">
+            <div class="lg:col-span-12">
                 <h1 class="leading-[0.98] tracking-tight">
                     <span
                         class="block text-5xl font-light sm:text-7xl xl:text-[5.5rem]"
@@ -10,18 +10,15 @@
                     <span
                         class="block text-5xl font-bold text-primary dark:text-primary-light sm:text-7xl xl:text-[5.5rem]">
                         {{ profile.lastName }}
-                        <span class="text-accent dark:text-accent-light">
-                            .
-                        </span>
                     </span>
                 </h1>
 
                 <p
-                    class="mt-6 max-w-xl text-[15px] leading-relaxed text-ink-400 dark:text-term-dim"
+                    class="mt-6 text-[15px] leading-relaxed text-ink-400 dark:text-term-dim"
                     v-text="profile.pitch" />
 
                 <div
-                    class="term mt-9 max-w-2xl"
+                    class="term mx-auto mt-9"
                     title="Cliquer pour sauter l'intro"
                     @click="tw.skip()">
                     <div
@@ -86,47 +83,6 @@
                     </a>
                 </div>
             </div>
-
-            <aside class="hidden lg:col-span-3 lg:block">
-                <div
-                    class="border-l-2 border-primary/30 pl-5 font-mono text-[11.5px] leading-[2.4] text-ink-400 dark:border-primary-light/30 dark:text-term-dim">
-                    <p>
-                        <span class="opacity-60">
-                            base&nbsp;&nbsp;&nbsp;&nbsp;
-                        </span>
-                        <span class="text-ink-900 dark:text-mist-100">
-                            {{ city }} / {{ country }}
-                        </span>
-                    </p>
-                    <p>
-                        <span class="opacity-60">fuseau&nbsp;&nbsp;</span>
-                        <span
-                            class="tabular-nums text-ink-900 dark:text-mist-100">
-                            {{ time }} · {{ tzLower }}
-                        </span>
-                    </p>
-                    <p>
-                        <span class="opacity-60">
-                            xp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        </span>
-                        <span class="text-ink-900 dark:text-mist-100">
-                            {{ profile.experienceYears }} ans d'expérience
-                        </span>
-                    </p>
-                    <p>
-                        <span class="opacity-60">stack&nbsp;&nbsp;&nbsp;</span>
-                        <span
-                            class="text-ink-900 dark:text-mist-100"
-                            v-text="stackLower" />
-                    </p>
-                    <p>
-                        <span class="opacity-60">statut&nbsp;&nbsp;</span>
-                        <span class="text-primary dark:text-primary-light">
-                            ● disponible
-                        </span>
-                    </p>
-                </div>
-            </aside>
         </div>
     </section>
 </template>
@@ -139,12 +95,7 @@
         count: number;
     }
 
-    const { time } = useClock();
-
-    const city = profile.location.split(',')[0].toLowerCase();
-    const country = profile.location.split(',')[1]?.toLowerCase() ?? '';
     const tzLower = profile.tzDisplay.toLowerCase();
-    const stackLower = profile.stack.map((s) => s.toLowerCase()).join(' · ');
 
     const KW = 'text-primary-light';
     const STR = 'text-accent-light';

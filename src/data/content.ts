@@ -1,25 +1,35 @@
 import type { Content } from '@/types/content';
 
+const siteUrl = 'https://eugene-manguithre.vercel.app/';
+
+const githubUrl = 'https://github.com/NathanM501/portfolio';
+
 export const content = {
     profile: {
         firstName: 'Eugène Jonathan',
         lastName: 'MANGUITHRE',
         role: 'Développeur Full Stack',
         tagline: 'Laravel & Vue.js',
-        pitch: "Je développe des applications web de bout en bout — back-end Laravel, front-end Vue.js — pour des entreprises de Toamasina. Autodidacte, je suis passé par le stage, le contrat, la mission. Aujourd'hui je cherche un poste en télétravail francophone — ou une opportunité sur site.",
+        pitch: "Je conçois des applications web de bout en bout — back-end Laravel, front-end Vue.js/Nuxt. Autodidacte et rigoureux, je m'implique à chaque étape du développement, de l'architecture à l'intégration. Je suis ouvert au télétravail ou à un poste sur site à Madagascar.",
         location: 'Toamasina, Madagascar',
         timezone: 'Indian/Antananarivo',
         tzDisplay: 'UTC+3',
-        experienceYears: 3,
-        stack: ['Laravel', 'Vue 3', 'TypeScript', 'Tailwind'],
+        experienceYears: 3.5,
+        stack: [
+            'Laravel',
+            'Vue 3',
+            'Nuxt',
+            'TypeScript',
+            'Tailwind CSS',
+            'Pest',
+        ],
         availability:
-            'Télétravail francophone · Ouvert aux opportunités sur site',
+            'Ouvert au télétravail ou à un poste sur site à Madagascar',
         email: 'eugene.manguithre@gmail.com',
         phone: '+261 34 06 938 23',
         cvUrl: '/resume.pdf',
-
         github: {
-            url: 'https://github.com/NathanM501/portfolio/blob/main/README.md',
+            url: githubUrl,
             display: 'NathanM501/portfolio',
         },
     },
@@ -86,25 +96,31 @@ export const content = {
             path: 'backend/',
             title: 'Développement back-end',
             stack: 'php · laravel · pgsql',
-            desc: 'Laravel en profondeur : Eloquent, middleware, events & queues, authentification multi-rôles avec Sanctum/Passport et OAuth, PostgreSQL et MySQL, tests PHPUnit et Pest.',
+            desc: 'Laravel en profondeur : Eloquent, middleware, events & queues, authentification multi-rôles avec Sanctum/Passport et OAuth, PostgreSQL et MySQL, génération de PDF, tests avec Pest.',
         },
         {
             path: 'frontend/',
             title: 'Développement front-end',
-            stack: 'vue 3 · ts · tailwind',
-            desc: 'Vue.js 3 en Composition API avec Vue Router et Pinia, TypeScript pour un code qui tient dans le temps, Tailwind CSS, tests Cypress.',
+            stack: 'vue 3 · inertia · tailwind',
+            desc: 'Vue.js 3 en Composition API avec Vue Router et Pinia, applications full-stack avec Inertia.js, Nuxt pour les projets SSR/multi-sites, PrimeVue, Tailwind CSS, TypeScript pour un code qui tient dans le temps.',
         },
         {
             path: 'api/',
             title: 'Intégrations & API',
             stack: 'rest · oauth · spatie',
-            desc: "Conception d'APIs REST sécurisées, intégration d'APIs tierces, stockage de fichiers avec Spatie et Cloudinary, emails transactionnels via Resend et Larael.",
+            desc: "Conception d'APIs REST sécurisées, intégration d'APIs tierces, stockage de fichiers avec Spatie et Cloudinary, emails transactionnels via Resend et Laravel.",
         },
         {
             path: 'qualite/',
-            title: 'Qualité & mise en production',
-            stack: 'pest · cypress · gh-actions',
-            desc: 'Tests automatiques, revue de code, CI/CD avec GitHub Actions et optimisation des performances — de la première ligne de code au deploy.',
+            title: 'Qualité & bonnes pratiques',
+            stack: 'pest · revue de code',
+            desc: 'Tests automatisés avec Pest, revue de code, respect des principes SRP/DRY, code structuré et documenté pour rester maintenable dans le temps.',
+        },
+        {
+            path: 'metier/',
+            title: 'Solutions métier',
+            stack: 'gestion rh · e-commerce',
+            desc: 'Applications métier complexes : gestion RH avec paie et pointage biométrique, plateformes e-commerce B2B multi-pays.',
         },
     ],
 
@@ -112,12 +128,12 @@ export const content = {
     projects: [
         {
             id: 1,
-            title: 'Application web Sénland',
-            client: 'SENland · Toamasina',
-            period: 'Depuis oct. 2024',
-            desc: "Développement et intégration de nouvelles fonctionnalités, intégration d'APIs tierces et optimisation du backend, de la conception à la mise en production.",
-            tags: ['Full Stack'],
-            tech: ['Laravel', 'Vue 3', 'TypeScript'],
+            title: 'RHManager — gestion RH agricole',
+            client: 'SANDLAND · Toamasina',
+            period: 'Mai. 2026 — Juillet 2026',
+            desc: 'Application de gestion RH pour campagnes agricoles : pointage biométrique (terminaux Hikvision), calcul de paie, contrats et bulletins de paie en PDF, suivi de présence en temps réel.',
+            tags: ['Full Stack', 'Back-end'],
+            tech: ['Laravel', 'Inertia.js', 'Vue 3', 'PrimeVue', 'Tailwind'],
         },
         {
             id: 2,
@@ -130,10 +146,10 @@ export const content = {
         },
         {
             id: 3,
-            title: 'Météo pour pêcheurs',
+            title: 'Mitao Forecast',
             client: 'Espace Filtre · Stage',
             period: 'Sept. — Nov. 2023',
-            desc: 'Application web de prévision météo destinée aux pêcheurs : API météo, prévisions et conseils de navigation, développée en Laravel 10 et Vue.js 3.',
+            desc: "Application web de prévision météo destinée aux pêcheurs : API météo, prévisions et conseils de navigation, développée avec l'équipe de dev d'Espace Filtre en Laravel 10 et Vue.js 3.",
             tags: ['Back-end', 'Front-end'],
             tech: ['Laravel 10', 'Vue 3', 'API REST'],
         },
@@ -151,14 +167,14 @@ export const content = {
     career: {
         experience: [
             {
-                id: 'senland',
-                period: "Oct. 2024 — Aujourd'hui",
+                id: 'sandland',
+                period: 'Oct. 2024 — Août 2026',
                 title: 'Développeur Full Stack (Laravel & Vue.js)',
-                place: 'SENland · Toamasina, MG',
+                place: 'SANDLAND · Toamasina, MG',
                 points: [
-                    'Développement et intégration de nouvelles fonctionnalités back-end et front-end',
-                    'Intégration d’APIs tierces et optimisation du backend',
-                    'Gestion complète du cycle de vie des fonctionnalités : conception, dev, tests, production',
+                    'Développement de RHManager : gestion RH pour campagnes agricoles',
+                    'Pointage biométrique, calcul de paie, génération de contrats et bulletins PDF',
+                    'Suivi de présence en temps réel via WebSockets (Laravel Reverb)',
                 ],
             },
             {
@@ -217,25 +233,25 @@ export const content = {
                     { name: 'PHP 8', level: 88 },
                     { name: 'API REST · Sanctum', level: 88 },
                     { name: 'PostgreSQL · MySQL', level: 78 },
-                    { name: 'PHPUnit · Pest', level: 75 },
+                    { name: 'Pest', level: 75 },
                 ],
             },
             {
                 group: 'frontend/',
                 items: [
                     { name: 'Vue 3 — Composition API', level: 90 },
+                    { name: 'Inertia.js · Nuxt', level: 85 },
                     { name: 'Vue Router · Pinia', level: 85 },
                     { name: 'Tailwind CSS', level: 84 },
                     { name: 'TypeScript', level: 80 },
-                    { name: 'Cypress', level: 72 },
                 ],
             },
             {
                 group: 'outils/',
                 items: [
-                    { name: 'Git · GitHub Actions', level: 86 },
+                    { name: 'Git', level: 86 },
                     { name: 'Cloudinary · Spatie', level: 76 },
-                    { name: 'Resend · Larael', level: 70 },
+                    { name: 'Resend · Laravel', level: 70 },
                 ],
             },
         ],
@@ -244,7 +260,7 @@ export const content = {
     ui: {
         contactHeading: 'Un projet, un poste,\nune question ?',
         contactIntro:
-            'Écris-moi — je réponds vite. Je cherche du télétravail francophone, et je suis ouvert aux opportunités sur site.',
+            'Écris-moi — je réponds vite. Je suis ouvert au télétravail comme aux opportunités sur site à Madagascar.',
         contactNote: 'réponse en moins de 24 h',
         projectsNote: '# projets clients — captures confidentielles (NDA)',
         skillsDescription: 'full stack — laravel & vue 3',
@@ -254,13 +270,44 @@ export const content = {
     },
 
     seo: {
-        title: 'Eugène Jonathan MANGUITHRE — Développeur Full Stack (Laravel & Vue.js)',
+        siteUrl,
+        title:
+            'Eugène Jonathan MANGUITHRE | Développeur Full Stack Laravel & Vue.js',
         description:
-            "Portfolio d'Eugène Jonathan MANGUITHRE, développeur Full Stack Laravel & Vue.js basé à Toamasina, Madagascar. Dispo en télétravail francophone.",
+            "Eugène Jonathan MANGUITHRE est un développeur full stack spécialisé dans le développement d'applications web avec Laravel et Vue.js. Basé à Toamasina (Madagascar), ouvert au télétravail et aux opportunités sur site.",
+        keywords: [
+            'Eugène Jonathan Manguithre',
+            'développeur full stack',
+            'Laravel',
+            'Vue.js',
+            'PHP',
+            'JavaScript',
+            'TypeScript',
+            'Tailwind',
+            'HTML',
+            'CSS',
+        ],
+        author: 'Eugène Jonathan Manguithre',
+        themeColor: '#14161b',
+        canonicalPath: '',
         openGraph: {
-            title: 'Eugène Jonathan MANGUITHRE — Développeur Full Stack (Laravel & Vue.js)',
+            type: 'website',
+            url: siteUrl,
+            title: 'Eugène Jonathan MANGUITHRE — Développeur Full Stack',
             description:
-                "Portfolio d'Eugène Jonathan MANGUITHRE, développeur Full Stack Laravel & Vue.js. Toamasina, Madagascar — disponible en remote.",
+                "Portfolio d'Eugène Jonathan MANGUITHRE — Laravel, Vue.js, TypeScript. Toamasina, Madagascar.",
+            image: 'og-cover.png',
+            imageAlt:
+                'Portfolio d’Eugène Jonathan MANGUITHRE, développeur Full Stack Laravel et Vue.js',
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: 'Eugène Jonathan MANGUITHRE — Développeur Full Stack',
+            description:
+                "Portfolio d'Eugène Jonathan MANGUITHRE — Laravel, Vue.js, TypeScript. Toamasina, Madagascar.",
+            image: 'og-cover.png',
+            imageAlt:
+                'Portfolio d’Eugène Jonathan MANGUITHRE, développeur Full Stack Laravel et Vue.js',
         },
         jsonLd: {
             '@context': 'https://schema.org',
@@ -270,12 +317,14 @@ export const content = {
             knowsAbout: [
                 'Laravel',
                 'Vue.js',
+                'Inertia.js',
                 'TypeScript',
                 'PostgreSQL',
                 'API REST',
-                'CI/CD',
             ],
             email: 'mailto:eugene.manguithre@gmail.com',
+            url: siteUrl,
+            sameAs: [githubUrl],
             address: {
                 '@type': 'PostalAddress',
                 addressLocality: 'Toamasina',
