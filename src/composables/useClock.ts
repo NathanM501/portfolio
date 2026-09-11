@@ -1,4 +1,6 @@
-const TZ = 'Indian/Antananarivo';
+import { profile } from '@/data';
+
+const TZ = profile.timezone;
 
 const OFFSET_HOURS = 3;
 
@@ -10,14 +12,13 @@ try {
     useIntl = false;
 }
 
-const formatWithIntl = (d: Date, withSeconds: boolean): string => {
-    return new Intl.DateTimeFormat('fr-FR', {
+const formatWithIntl = (d: Date, withSeconds: boolean): string =>
+    new Intl.DateTimeFormat('fr-FR', {
         hour: '2-digit',
         minute: '2-digit',
         ...(withSeconds ? { second: '2-digit' as const } : {}),
         timeZone: TZ,
     }).format(d);
-};
 
 const formatManual = (d: Date, withSeconds: boolean): string => {
     const shifted = new Date(d.getTime() + OFFSET_HOURS * 3600000);

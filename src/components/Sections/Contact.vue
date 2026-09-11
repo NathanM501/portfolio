@@ -6,26 +6,20 @@
         <div class="mx-auto max-w-6xl px-4 sm:px-6">
             <Reveal>
                 <SectionHeading
-                    path="contact/"
-                    title="Contact"
-                    note="réponse en moins de 24 h" />
+                    :path="section.path"
+                    :title="section.title"
+                    :note="section.note" />
             </Reveal>
 
             <div class="grid gap-12 lg:grid-cols-12 lg:gap-10">
                 <div class="lg:col-span-7">
                     <Reveal>
                         <h3
-                            class="text-2xl font-light leading-snug sm:text-4xl sm:leading-snug">
-                            Un projet, un poste,
-                            <br />
-                            une question ?
-                        </h3>
+                            class="whitespace-pre-line text-2xl font-light leading-snug sm:text-4xl sm:leading-snug"
+                            v-text="ui.contactHeading" />
                         <p
-                            class="mt-5 max-w-md text-[15px] leading-relaxed text-ink-400 dark:text-term-dim">
-                            Écris-moi — je réponds vite. Je cherche du
-                            télétravail francophone, et je suis ouvert aux
-                            opportunités sur site.
-                        </p>
+                            class="mt-5 max-w-md text-[15px] leading-relaxed text-ink-400 dark:text-term-dim"
+                            v-text="ui.contactIntro" />
 
                         <a
                             :href="`mailto:${profile.email}`"
@@ -80,14 +74,16 @@
                                 </div>
                                 <div class="grid grid-cols-[92px_1fr] gap-x-3">
                                     <dt class="text-term-dim">location</dt>
-                                    <dd>toamasina — madagascar</dd>
+                                    <dd
+                                        v-text="
+                                            profile.location.toLowerCase()
+                                        " />
                                 </div>
                                 <div class="grid grid-cols-[92px_1fr] gap-x-3">
                                     <dt class="text-term-dim">dispo</dt>
                                     <dd>
                                         <span class="text-accent-light">●</span>
-                                        télétravail francophone · ouvert sur
-                                        site
+                                        {{ availabilityLower }}
                                     </dd>
                                 </div>
                                 <div class="grid grid-cols-[92px_1fr] gap-x-3">
@@ -112,12 +108,14 @@
 </template>
 
 <script setup lang="ts">
-    import { profile } from '../data/profile';
+    import { profile, availabilityLower, ui } from '@/data';
 
+    const section = useSection('contact');
     const { copy } = useClipboard();
-    const copied = ref<boolean>(false);
 
+    const copied = ref<boolean>(false);
     const resetDelay = ref<number>(1600);
+
     const reset = useTimeoutFn(
         (): void => {
             copied.value = false;

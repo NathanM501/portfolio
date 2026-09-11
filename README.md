@@ -1,62 +1,62 @@
-# Portfolio — Eugène Jonathan Manguithre
+# Eugène Jonathan MANGUITHRE
 
-Portfolio one-page (développeur Full Stack — Laravel & Vue.js).
+**Développeur Full Stack — Laravel & Vue.js**
 
-## Démarrage
+📍 Toamasina, Madagascar
 
-```bash
-npm install
-npm run dev      # http://localhost:5173
-npm run build    # typecheck + build de production (dist/)
-```
+---
 
-## Scripts
+Bonjour, je suis Eugène Jonathan. Depuis deux ans, je conçois et développe des
+applications web complètes — de la base de données à l'interface — au service
+d'équipes à Madagascar.
 
-| Script            | Description                                                        |
-| ----------------- | ------------------------------------------------------------------ |
-| `npm run dev`     | Serveur de dev Vite                                                |
-| `npm run build`   | `vue-tsc --noEmit` puis `vite build` (bloqué si erreur de types)   |
-| `npm run typecheck` | Contrôle des types sans émission                                 |
-| `npm run lint`    | ESLint (`--fix`) sur `src/**/*.{js,ts,vue}`                        |
-| `npm run format`  | Prettier sur `src/**/*.{js,ts,vue}`                                |
+J'aime les projets où le back-end (Laravel, API, PostgreSQL) et le front-end
+(Vue 3, TypeScript, Tailwind) se répondent, et je prends soin du code du
+premier commit jusqu'à la mise en production.
 
-## Stack
+## Ce que je fais
 
-- **Vue 3** (`<script setup>`) + **TypeScript**
-- **Tailwind CSS v4** — config CSS-first dans `src/style.css` (bloc `@theme`)
-- **VueUse** (`@vueuse/core`)
-- **unplugin-auto-import** + **unplugin-vue-components** — aucun import manuel pour `vue`, `@vueuse/core`, les composables (`src/composables`) ni les composants (`src/components`)
-- **ESLint** (flat config) + **Prettier**
-- Polices : Poppins + DM Mono (Google Fonts, `index.html`)
+- **Développement back-end** — API REST Laravel, modélisation PostgreSQL,
+  sécurité des routes, tests.
+- **Développement front-end** — interfaces Vue 3 composant par composant,
+  typées en TypeScript, stylées avec Tailwind.
+- **Refonte d'applications** — modernisation de bases existantes (Laravel 10 →
+  Vue 3), amélioration des performances.
+- **Intégration & maintenance** — intégration d'APIs tierces, suivi en
+  production, petites améliorations continues.
 
-## Structure
+## Ma stack
 
-```
-src/
-├── components/     # Vues : Hero, Services, Projects, Resume, Skills, Contact,
-│                   # Navbar, StatusBar, CommandPalette, BackToTop, Footer,
-│                   # Reveal, SectionHeading  (auto-enregistrés)
-├── composables/    # useTheme, useClock, useActiveSection, useTypewriter
-│                   #  (auto-importés)
-├── data/profile.ts # Tout le contenu du site (nom, exp, projets, skills)
-├── style.css       # Tokens @theme + styles (fenêtres, boutons, curseur…)
-└── main.ts
-```
+**Langages** — PHP · TypeScript · JavaScript · SQL · HTML/CSS
 
-## Personnalisation
+**Back-end** — Laravel · API REST · PostgreSQL · MySQL
 
-- **Contenu** : tout est dans `src/data/profile.ts` (y compris les niveaux de skills).
-- **CV** : remplacer `public/resume.pdf`.
-- **Couleurs / tokens** : bloc `@theme` de `src/style.css`.
-- **Raccourci palette** : `Ctrl+K` ou `/` (traitement dans `src/components/CommandPalette.vue`).
+**Front-end** — Vue 3 · TypeScript · Tailwind CSS · Vite
 
-## Notes
+**Pratique** — Git · CI/CD · tests · travail d'équipe
 
-- Dark mode par défaut, préférence persistée dans `localStorage` (`theme`).
-- Horloge de Toamasina : fuseau `Indian/Antananarivo` avec repli UTC+3 manuel
-  (`src/composables/useClock.ts`).
-- Projets = travail client, captures confidentielles (NDA).
+## Mon parcours
 
-## Déploiement
+| Période            | Poste                     | Lieu                      |
+| ------------------ | ------------------------- | ------------------------- |
+| 2024 — aujourd'hui | Développeur Full Stack    | SENland · Toamasina       |
+| 2023 — aujourd'hui | Développeur Full Stack    | Espace Filtre · Toamasina |
+| 2023               | Stage — développement web | Espace Filtre · Toamasina |
 
-Vercel, Netlify ou Cloudflare Pages — build `npm run build`, output `dist/`.
+**Formation** — Licence Informatique (UPHA, 2023–24) · DTS (2021–23)
+
+## Disponibilité
+
+Je cherche du **télétravail francophone** et je reste ouvert aux
+opportunités **sur site**.
+
+## Contact
+
+- ✉️ [eugene.manguithre@gmail.com](mailto:eugene.manguithre@gmail.com)
+- 📞 034 06 938 23
+
+---
+
+_Ce site est mon portfolio : il présente mes projets, ma stack et mon parcours.
+Construit avec Vue 3, Vite, Tailwind CSS v4 et VueUse — thème sombre/clair,
+navigation clavier (Ctrl+K).

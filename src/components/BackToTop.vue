@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
     const { y } = useScroll(window);
-    const show = computed<boolean>((): boolean => y.value > 600);
+    const show = computed<boolean>(() => y.value > 600);
 
     const toTop = (): void => window.scrollTo({ top: 0, behavior: 'smooth' });
 </script>

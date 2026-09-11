@@ -24,7 +24,7 @@ export const useTypewriter = (
         lines.map((l) => ({ tokens: l, count: 0, active: false })),
     );
 
-    const finished = ref(false);
+    const finished = ref<boolean>(false);
 
     let idx = 0;
 
@@ -44,12 +44,11 @@ export const useTypewriter = (
         timer.start();
     };
 
-    const len = (l: LineState): number => {
-        return l.tokens.reduce((s, t) => s + t.t.length, 0);
-    };
+    const len = (l: LineState): number =>
+        l.tokens.reduce((s, t) => s + t.t.length, 0);
 
     const completeAll = (): void => {
-        linesState.value.forEach((l) => {
+        linesState.value.forEach((l: LineState): void => {
             l.count = len(l);
             l.active = false;
         });
@@ -62,12 +61,14 @@ export const useTypewriter = (
 
         if (!cur) {
             finished.value = true;
+
             return;
         }
 
-        const L: number = len(cur);
+        const L = len(cur);
 
         n++;
+
         cur.count = Math.min(n, L);
 
         if (n >= L) {
@@ -77,6 +78,7 @@ export const useTypewriter = (
 
             if (idx >= linesState.value.length) {
                 finished.value = true;
+
                 return;
             }
 
@@ -91,6 +93,7 @@ export const useTypewriter = (
     const start = (): void => {
         if (reduced) {
             completeAll();
+
             return;
         }
 

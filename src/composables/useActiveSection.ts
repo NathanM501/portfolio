@@ -1,20 +1,13 @@
-export const SECTION_IDS: string[] = [
-    'accueil',
-    'services',
-    'projects',
-    'resume',
-    'skills',
-    'contact',
-];
+import { sectionIds } from '@/utils/sections';
 
 export const useActiveSection = (): { current: Ref<string> } => {
     const current = ref<string>('accueil');
 
     onMounted((): void => {
         nextTick((): void => {
-            const els = SECTION_IDS.map((id) =>
-                document.getElementById(id),
-            ).filter((el): el is HTMLElement => !!el);
+            const els = sectionIds
+                .map((id) => document.getElementById(id))
+                .filter((el): el is HTMLElement => !!el);
 
             useIntersectionObserver(
                 els,

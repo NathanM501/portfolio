@@ -68,7 +68,7 @@
 </template>
 
 <script setup lang="ts">
-    import { profile } from '../data/profile';
+    import { profile } from '@/data';
 
     const { toggle } = useTheme();
     const { copy } = useClipboard();
@@ -78,6 +78,10 @@
     const sel = ref<number>(0);
     const input = ref<HTMLInputElement | null>(null);
 
+    const close = (): void => {
+        open.value = false;
+    };
+
     const nav = (id: string): void => {
         close();
 
@@ -85,42 +89,12 @@
     };
 
     const commands = [
-        {
-            id: 'accueil',
-            label: 'Aller à — accueil',
-            hint: '~',
-            run: (): void => nav('accueil'),
-        },
-        {
-            id: 'services',
-            label: 'Aller à — services',
-            hint: 'services/',
-            run: (): void => nav('services'),
-        },
-        {
-            id: 'projects',
-            label: 'Aller à — projets',
-            hint: 'projets/',
-            run: (): void => nav('projects'),
-        },
-        {
-            id: 'resume',
-            label: 'Aller à — parcours',
-            hint: 'parcours/',
-            run: (): void => nav('resume'),
-        },
-        {
-            id: 'skills',
-            label: 'Aller à — stack',
-            hint: 'stack/',
-            run: (): void => nav('skills'),
-        },
-        {
-            id: 'contact',
-            label: 'Aller à — contact',
-            hint: 'contact/',
-            run: (): void => nav('contact'),
-        },
+        ...paletteSections.map((s) => ({
+            id: s.id,
+            label: `Aller à — ${s.label}`,
+            hint: s.path || '~',
+            run: (): void => nav(s.id),
+        })),
         {
             id: 'theme',
             label: 'Basculer le thème dark / light',
@@ -132,7 +106,7 @@
         },
         {
             id: 'cv',
-            label: 'Télécharger le CV (resume.pdf)',
+            label: `Télécharger le CV (${profile.cvUrl.replace(/^\//, '')})`,
             hint: 'resume.pdf',
             run: (): void => {
                 window.open(profile.cvUrl, '_blank');
@@ -157,11 +131,12 @@
     );
 
     watch(q, () => (sel.value = 0));
+
     watch(open, (v) => {
         if (v) nextTick(() => input.value?.focus());
     });
 
-    const isTypingTarget = (t: EventTarget | null): boolean => {
+    const isTypingTarget = (t: EventTarget | null) => {
         const el = t as HTMLElement | null;
 
         return (
@@ -176,10 +151,6 @@
         open.value = true;
         q.value = '';
         sel.value = 0;
-    };
-
-    const close = (): void => {
-        open.value = false;
     };
 
     const run = (i: number): void => {

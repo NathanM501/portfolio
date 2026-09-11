@@ -5,12 +5,11 @@
             <div class="lg:col-span-9">
                 <h1 class="leading-[0.98] tracking-tight">
                     <span
-                        class="block text-5xl font-light sm:text-7xl xl:text-[5.5rem]">
-                        Eugène Jonathan
-                    </span>
+                        class="block text-5xl font-light sm:text-7xl xl:text-[5.5rem]"
+                        v-text="profile.firstName" />
                     <span
                         class="block text-5xl font-bold text-primary dark:text-primary-light sm:text-7xl xl:text-[5.5rem]">
-                        MANGUITHRE
+                        {{ profile.lastName }}
                         <span class="text-accent dark:text-accent-light">
                             .
                         </span>
@@ -40,11 +39,12 @@
                     </div>
 
                     <p class="sr-only">
-                        Eugène Jonathan Manguithre — Développeur Full Stack,
-                        Laravel et Vue.js. Stack : Laravel, Vue 3, TypeScript,
-                        Tailwind. 2 ans d'expérience, Toamasina, Madagascar
-                        (UTC+3). Disponible — télétravail francophone, ouvert
-                        aux opportunités sur site.
+                        {{ fullName }} — {{ profile.role }},
+                        {{ profile.tagline }}. Stack :
+                        {{ profile.stack.join(', ') }}.
+                        {{ profile.experienceYears }} ans d'expérience,
+                        {{ profile.location }} ({{ profile.tzDisplay }}).
+                        Disponible — {{ availabilityLower }}.
                     </p>
 
                     <div
@@ -59,14 +59,12 @@
                                 :key="j"
                                 :class="tok.c ?? 'text-term-text'"
                                 v-text="part(l, j)" />
-
                             <span
                                 v-if="l.active && l.count < lineLen(l)"
                                 class="blink text-accent-light">
                                 ▮
                             </span>
                         </p>
-
                         <p v-if="tw.finished.value" class="text-term-dim">
                             <span class="blink text-accent-light">▮</span>
                         </p>
@@ -97,14 +95,14 @@
                             base&nbsp;&nbsp;&nbsp;&nbsp;
                         </span>
                         <span class="text-ink-900 dark:text-mist-100">
-                            toamasina / mg
+                            {{ city }} / {{ country }}
                         </span>
                     </p>
                     <p>
                         <span class="opacity-60">fuseau&nbsp;&nbsp;</span>
                         <span
                             class="tabular-nums text-ink-900 dark:text-mist-100">
-                            {{ time }} · utc+3
+                            {{ time }} · {{ tzLower }}
                         </span>
                     </p>
                     <p>
@@ -112,14 +110,14 @@
                             xp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </span>
                         <span class="text-ink-900 dark:text-mist-100">
-                            2 ans d'expérience
+                            {{ profile.experienceYears }} ans d'expérience
                         </span>
                     </p>
                     <p>
                         <span class="opacity-60">stack&nbsp;&nbsp;&nbsp;</span>
-                        <span class="text-ink-900 dark:text-mist-100">
-                            laravel · vue 3 · ts
-                        </span>
+                        <span
+                            class="text-ink-900 dark:text-mist-100"
+                            v-text="stackLower" />
                     </p>
                     <p>
                         <span class="opacity-60">statut&nbsp;&nbsp;</span>
@@ -134,9 +132,19 @@
 </template>
 
 <script setup lang="ts">
-    import { profile } from '../data/profile';
+    import { availabilityLower, fullName, profile } from '@/data';
+
+    interface LineLike {
+        tokens: { t: string; c?: string }[];
+        count: number;
+    }
 
     const { time } = useClock();
+
+    const city = profile.location.split(',')[0].toLowerCase();
+    const country = profile.location.split(',')[1]?.toLowerCase() ?? '';
+    const tzLower = profile.tzDisplay.toLowerCase();
+    const stackLower = profile.stack.map((s) => s.toLowerCase()).join(' · ');
 
     const KW = 'text-primary-light';
     const STR = 'text-accent-light';
@@ -147,51 +155,45 @@
         [
             { t: '    nom', c: KW },
             { t: ': ', c: DIM },
-            { t: "'Eugène Jonathan Manguithre'", c: STR },
+            { t: `'${fullName}'`, c: STR },
             { t: ',', c: DIM },
         ],
         [
             { t: '    role', c: KW },
             { t: ': ', c: DIM },
-            { t: "'Développeur Full Stack — Laravel & Vue.js'", c: STR },
+            { t: `'${profile.role} — ${profile.tagline}'`, c: STR },
             { t: ',', c: DIM },
         ],
         [
             { t: '    stack', c: KW },
             { t: ': [', c: DIM },
-            { t: "'Laravel', 'Vue 3', 'TypeScript', 'Tailwind'", c: STR },
+            { t: profile.stack.map((s) => `'${s}'`).join(', '), c: STR },
             { t: '],', c: DIM },
         ],
         [
             { t: '    experience', c: KW },
             { t: ': ', c: DIM },
-            { t: "'2 ans'", c: STR },
+            { t: `'${profile.experienceYears} ans'`, c: STR },
             { t: ',', c: DIM },
         ],
         [
             { t: '    base', c: KW },
             { t: ': ', c: DIM },
-            { t: "'Toamasina — Madagascar (UTC+3)'", c: STR },
+            { t: `'${profile.location} (${tzLower})'`, c: STR },
             { t: ',', c: DIM },
         ],
         [
             { t: '    dispo', c: KW },
             { t: ': ', c: DIM },
-            { t: "'télétravail francophone · ouvert sur site'", c: STR },
+            { t: `'${availabilityLower}'`, c: STR },
         ],
         [{ t: '}', c: DIM }],
     ];
 
     const tw = useTypewriter(CODE);
 
-    interface LineLike {
-        tokens: { t: string; c?: string }[];
-        count: number;
-    }
-
-    const lineLen = (l: LineLike): number => {
-        return l.tokens.reduce((s, t) => s + t.t.length, 0);
-    };
+    const lineLen = (l: LineLike): number =>
+        l.tokens.reduce((s, t) => s + t.t.length, 0);
 
     const part = (l: LineLike, j: number): string => {
         let offset = 0;

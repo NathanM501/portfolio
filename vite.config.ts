@@ -14,7 +14,7 @@ export default defineConfig({
         }),
         AutoImport({
             imports: ['vue', '@vueuse/core'],
-            dirs: ['src/composables', 'src/constants'],
+            dirs: ['src/composables', 'src/constants', 'src/utils'],
             vueTemplate: true,
             dts: true,
             eslintrc: {
@@ -26,7 +26,11 @@ export default defineConfig({
     server: {
         host: '0.0.0.0',
         port: 5173,
-        // Autorise les hosts du preview sandbox (*.e2b.app)
         allowedHosts: true,
+    },
+    resolve: {
+        alias: {
+            '@': '/src',
+        },
     },
 });

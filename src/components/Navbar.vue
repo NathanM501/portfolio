@@ -24,7 +24,7 @@
                 class="ml-auto hidden items-center gap-5 md:flex"
                 aria-label="Navigation principale">
                 <a
-                    v-for="l in links"
+                    v-for="l in navbarLinks"
                     :key="l.id"
                     :href="`#${l.id}`"
                     class="font-mono text-[12.5px] transition-colors"
@@ -38,19 +38,14 @@
                 </a>
             </nav>
 
-            <span
-                class="hidden font-mono text-[12px] tabular-nums text-ink-400 dark:text-term-dim xl:inline">
-                {{ time }} · UTC+3
-            </span>
-
             <button
                 type="button"
-                class="font-mono text-[12px] text-ink-400 transition-colors hover:text-ink-900 dark:text-term-dim dark:hover:text-mist-100"
+                class="font-mono text-[12px] text-ink-400 transition-colors hover:text-ink-900 dark:text-term-dim dark:hover:text-mist-100 cursor-pointer"
                 :aria-label="
                     dark ? 'Passer en mode clair' : 'Passer en mode sombre'
                 "
                 @click="toggle">
-                [ {{ dark ? 'dark' : 'light' }} ]
+                [ {{ dark ? THEME.dark : THEME.light }} ]
             </button>
 
             <a
@@ -76,7 +71,7 @@
                 class="mx-auto max-w-6xl space-y-1 px-4 py-3"
                 aria-label="Navigation mobile">
                 <a
-                    v-for="l in links"
+                    v-for="l in navbarLinks"
                     :key="l.id"
                     :href="`#${l.id}`"
                     class="block rounded-md px-2 py-2 font-mono text-[13px] text-ink-400 transition-colors hover:text-ink-900 dark:text-term-dim dark:hover:text-mist-100"
@@ -101,18 +96,9 @@
 
 <script setup lang="ts">
     const { dark, toggle } = useTheme();
-    const { time } = useClock();
     const { current } = useActiveSection();
     const { y } = useScroll(window);
 
     const open = ref<boolean>(false);
     const scrolled = computed<boolean>(() => y.value > 12);
-
-    const links = [
-        { id: 'services', label: 'services' },
-        { id: 'projects', label: 'projets' },
-        { id: 'resume', label: 'parcours' },
-        { id: 'skills', label: 'stack' },
-        { id: 'contact', label: 'contact' },
-    ];
 </script>
