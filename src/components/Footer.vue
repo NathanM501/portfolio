@@ -5,6 +5,14 @@
             <span>
                 © {{ year }} {{ nameSlug }} — {{ ui.footerTechnologies }}
             </span>
+            <a
+                :href="profile.github.url"
+                target="_blank"
+                rel="noopener"
+                class="text-ink-400 transition-colors hover:text-primary dark:text-term-dim dark:hover:text-primary-light">
+                {{ profile.github.display }}
+                <span aria-hidden="true">↗</span>
+            </a>
             <span>
                 -- fin du fichier ·
                 <a
@@ -18,7 +26,7 @@
 </template>
 
 <script setup lang="ts">
-    import { nameSlug, ui } from '@/data';
+    import { nameSlug, profile, ui } from '@/data';
 
     const year = new Date().getFullYear();
 </script>

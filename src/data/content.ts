@@ -17,6 +17,11 @@ export const content = {
         email: 'eugene.manguithre@gmail.com',
         phone: '+261 34 06 938 23',
         cvUrl: '/resume.pdf',
+
+        github: {
+            url: 'https://github.com/NathanM501/portfolio/blob/main/README.md',
+            display: 'NathanM501/portfolio',
+        },
     },
 
     sections: [

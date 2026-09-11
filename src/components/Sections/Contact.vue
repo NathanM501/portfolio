@@ -108,7 +108,7 @@
 </template>
 
 <script setup lang="ts">
-    import { profile, availabilityLower, ui } from '@/data';
+    import { availabilityLower, profile, ui } from '@/data';
 
     const section = useSection('contact');
     const { copy } = useClipboard();

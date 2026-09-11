@@ -40,7 +40,7 @@
 </template>
 
 <script setup lang="ts">
-import { services } from '@/data';
-    
+    import { services } from '@/data';
+
     const section = useSection('services');
 </script>

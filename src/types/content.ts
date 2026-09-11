@@ -13,6 +13,10 @@ export interface Profile {
     email: string;
     phone: string;
     cvUrl: string;
+    github: {
+        url: string;
+        display: string;
+    };
 }
 
 export interface Section {
