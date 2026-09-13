@@ -21,7 +21,7 @@
             </a>
 
             <nav
-                class="ml-auto hidden items-center gap-5 md:flex"
+                class="ml-auto hidden items-center gap-5 md:flex capitalize"
                 aria-label="Navigation principale">
                 <a
                     v-for="l in navbarLinks"
@@ -45,7 +45,7 @@
                     dark ? 'Passer en mode clair' : 'Passer en mode sombre'
                 "
                 @click="toggle">
-                [ {{ dark ? THEME.dark : THEME.light }} ]
+                [ {{ dark ? THEME_LABEL.dark : THEME_LABEL.light }} ]
             </button>
 
             <a
