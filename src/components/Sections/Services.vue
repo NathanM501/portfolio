@@ -32,8 +32,6 @@
                             v-text="s.stack" />
                     </article>
                 </Reveal>
-
-                <div class="border-t border-line dark:border-line-dark" />
             </div>
         </div>
     </section>

@@ -54,9 +54,8 @@
             </div>
 
             <p
-                class="mt-8 font-mono text-[11px] text-ink-400/70 dark:text-term-dim/60">
-                # {{ ui.projectsNote }}
-            </p>
+                class="mt-8 font-mono text-[11px] text-ink-400/70 dark:text-term-dim/60"
+                v-text="ui.projectsNote" />
         </div>
     </section>
 </template>

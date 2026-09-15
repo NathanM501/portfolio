@@ -10,8 +10,14 @@ export interface Profile {
     experienceYears: number;
     stack: string[];
     availability: string;
+    availabilityShort: string;
     email: string;
     phone: string;
+    phoneHref: string;
+    whatsapp: {
+        url: string;
+        display: string;
+    };
     cvUrl: string;
     github: {
         url: string;
@@ -63,6 +69,8 @@ export interface SkillRow {
 export interface Ui {
     contactHeading: string;
     contactIntro: string;
+    contactBadge: string;
+    contactBadgeNote: string;
     contactNote: string;
     projectsNote: string;
     skillsDescription: string;

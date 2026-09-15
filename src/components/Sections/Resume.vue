@@ -39,9 +39,6 @@
                             :delay="i * 50">
                             <TimelineEntry :entry="e" />
                         </Reveal>
-
-                        <div
-                            class="border-t border-line dark:border-line-dark" />
                     </div>
                 </Reveal>
             </div>

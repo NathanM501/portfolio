@@ -41,7 +41,7 @@
                         {{ profile.stack.join(', ') }}.
                         {{ profile.experienceYears }} ans d'expérience,
                         {{ profile.location }} ({{ profile.tzDisplay }}).
-                        Disponible — {{ availabilityLower }}.
+                        {{ profile.availability }}.
                     </p>
 
                     <div
@@ -88,7 +88,7 @@
 </template>
 
 <script setup lang="ts">
-    import { availabilityLower, fullName, profile } from '@/data';
+    import { fullName, profile } from '@/data';
 
     interface LineLike {
         tokens: { t: string; c?: string }[];
@@ -136,7 +136,7 @@
         [
             { t: '    dispo', c: KW },
             { t: ': ', c: DIM },
-            { t: `'${availabilityLower}'`, c: STR },
+            { t: `'${profile.availabilityShort}'`, c: STR },
         ],
         [{ t: '}', c: DIM }],
     ];

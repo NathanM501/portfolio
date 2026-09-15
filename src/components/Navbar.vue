@@ -51,7 +51,7 @@
             <a
                 href="#contact"
                 class="hidden rounded-lg border border-primary/50 px-3.5 py-1.5 font-mono text-[12.5px] text-primary transition-colors hover:bg-primary hover:text-white dark:border-primary-light/60 dark:text-primary-light dark:hover:bg-primary-light dark:hover:text-ink-900 sm:inline-block">
-                Me recruter
+                Démarrer un projet
             </a>
 
             <button
@@ -87,7 +87,7 @@
                     href="#contact"
                     class="block rounded-md px-2 py-2 font-mono text-[13px] text-primary dark:text-primary-light"
                     @click="open = false">
-                    → Me recruter
+                    → Démarrer un projet
                 </a>
             </nav>
         </div>

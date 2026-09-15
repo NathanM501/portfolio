@@ -5,3 +5,5 @@ components.d.ts
 package-lock.json
 dist/
 .vercel/
+.freebuff
+AGENTS.md

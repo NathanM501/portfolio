@@ -83,7 +83,7 @@
                                     <dt class="text-term-dim">dispo</dt>
                                     <dd>
                                         <span class="text-accent-light">●</span>
-                                        {{ availabilityLower }}
+                                        {{ profile.availabilityShort }}
                                     </dd>
                                 </div>
                                 <div class="grid grid-cols-[118px_1fr] gap-x-3">
@@ -102,13 +102,7 @@
 </template>
 
 <script setup lang="ts">
-    import {
-        availabilityLower,
-        nameSlug,
-        profile,
-        skillRows,
-        ui,
-    } from '@/data';
+    import { nameSlug, profile, skillRows, ui } from '@/data';
 
     const section = useSection('skills');
 </script>

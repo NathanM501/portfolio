@@ -10,7 +10,7 @@ export const content = {
         lastName: 'MANGUITHRE',
         role: 'Développeur Full Stack',
         tagline: 'Laravel & Vue.js',
-        pitch: "Je conçois des applications web de bout en bout — back-end Laravel, front-end Vue.js/Nuxt. Autodidacte et rigoureux, je m'implique à chaque étape du développement, de l'architecture à l'intégration. Je suis ouvert au télétravail ou à un poste sur site à Madagascar.",
+        pitch: "Je conçois des applications web de bout en bout pour mes clients — back-end Laravel, front-end Vue.js/Nuxt. Autodidacte et rigoureux, je m'implique à chaque étape du développement, de l'architecture à l'intégration. Full remote pour Espace Filtre depuis plus de 3 ans, j'accompagne des clients freelance et je suis ouvert à un poste à plein temps — en télétravail ou sur site à Madagascar.",
         location: 'Toamasina, Madagascar',
         timezone: 'Indian/Antananarivo',
         tzDisplay: 'UTC+3',
@@ -25,9 +25,18 @@ export const content = {
             'Pest',
         ],
         availability:
-            'Ouvert au télétravail ou à un poste sur site à Madagascar',
+            'Disponible immédiatement — missions freelance ou poste à plein temps',
+        availabilityShort: 'dispo immédiate',
         email: 'eugene.manguithre@gmail.com',
         phone: '+261 34 06 938 23',
+        phoneHref: 'tel:+261340693823',
+        whatsapp: {
+            url: 'https://wa.me/261340693823?text=' +
+                encodeURIComponent(
+                    "Bonjour Eugène, j'ai un projet et j'aimerais en discuter avec vous.",
+                ),
+            display: 'WhatsApp',
+        },
         cvUrl: '/resume.pdf',
         github: {
             url: githubUrl,
@@ -195,27 +204,28 @@ export const content = {
     career: {
         experience: [
             {
-                id: 'sandland',
-                period: 'Oct. 2024 — Août 2026',
-                title: 'Développeur — missions ponctuelles',
-                place: 'SANDLAND · Toamasina, MG',
-                points: [
-                    'App Mariage : plateforme de mariage multi-sites (oct. 2024 — avr. 2026)',
-                    'RHManager : gestion RH pour campagnes agricoles, pointage biométrique et paie (mai — août 2026)',
-                ],
-            },
-            {
                 id: 'espace-filtre',
                 period: "Avr. 2023 — Aujourd'hui",
                 title: 'Développeur Full Stack (Laravel & Vue.js)',
                 place: 'Espace Filtre · Toamasina, MG',
                 points: [
-                    'Stage puis recrutement, poste actuel',
+                    'Collaboration à distance débutée en stage (avr. 2023), poursuivie en full remote',
                     "Refonte complète de l'application interne (Laravel + Vue.js 3), évoluée vers une plateforme e-commerce B2B multi-pays en Nuxt",
                     'Logiko : application de livraison avec géolocalisation GPS',
                     "Lokonaka : upgrade solo d'un site de peinture (Vue 2/Laravel 5-6 → Laravel 10/Vue 3) avec ajout d'un backoffice",
                     'Mitao Forecast : application de prévision météo pour pêcheurs',
                     'Gestion de stock & paiements avec factures PDF',
+                ],
+            },
+            {
+                id: 'sandland',
+                period: 'Oct. 2024 — Août 2026',
+                title: 'Développeur — missions freelance',
+                place: 'SANDLAND · Toamasina, MG',
+                points: [
+                    "Missions freelance menées en parallèle du poste chez Espace Filtre, sans rupture d'activité",
+                    'App Mariage : plateforme de mariage multi-sites (oct. 2024 — avr. 2026)',
+                    'RHManager : gestion RH pour campagnes agricoles, pointage biométrique et paie (mai — août 2026)',
                 ],
             },
         ],
@@ -271,9 +281,11 @@ export const content = {
     },
 
     ui: {
-        contactHeading: 'Un projet, un poste,\nune question ?',
+        contactHeading: 'Un projet, une idée,\nune question ?',
         contactIntro:
-            'Écris-moi — je réponds vite. Je suis ouvert au télétravail comme aux opportunités sur site à Madagascar.',
+            "Décris-moi ton besoin — je réponds vite, avec un devis clair.",
+        contactBadge: 'Dispo immédiate',
+        contactBadgeNote: 'missions freelance ou poste à plein temps',
         contactNote: 'réponse en moins de 24 h',
         projectsNote: '# projets clients — captures confidentielles (NDA)',
         skillsDescription: 'full stack — laravel & vue 3',
@@ -286,7 +298,7 @@ export const content = {
         siteUrl,
         title: 'Eugène Jonathan MANGUITHRE | Développeur Full Stack Laravel & Vue.js',
         description:
-            "Eugène Jonathan MANGUITHRE est un développeur full stack spécialisé dans le développement d'applications web avec Laravel et Vue.js. Basé à Toamasina (Madagascar), ouvert au télétravail et aux opportunités sur site.",
+            "Eugène Jonathan MANGUITHRE est un développeur full stack spécialisé dans le développement d'applications web avec Laravel et Vue.js. Basé à Toamasina (Madagascar), disponible immédiatement pour des missions freelance ou un poste, en full remote ou sur site.",
         keywords: [
             'Eugène Jonathan Manguithre',
             'développeur full stack',
